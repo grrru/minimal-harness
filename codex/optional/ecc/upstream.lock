@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "name": "ECC",
+  "repository": "https://github.com/affaan-m/ECC",
+  "branch": "main",
+  "commit": "928076cc08cbb31e8549cea2883b4f51811de1c8",
+  "version": "2.0.0-rc.1",
+  "checked_at": "2026-05-28",
+  "local_clone": "upstream/ECC"
+}

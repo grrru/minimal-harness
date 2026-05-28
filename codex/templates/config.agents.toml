@@ -1,0 +1,11 @@
+[agents.code-mapper]
+description = "Read-only code path mapper for tracing ownership, execution flow, and risk boundaries before edits."
+config_file = "agents/code-mapper.toml"
+
+[agents.reviewer]
+description = "Read-only reviewer focused on correctness, security, regressions, and missing tests."
+config_file = "agents/reviewer.toml"
+
+[agents.docs-researcher]
+description = "Read-only documentation researcher for current API, framework, tool, and Codex behavior."
+config_file = "agents/docs-researcher.toml"

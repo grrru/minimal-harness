@@ -1,0 +1,20 @@
+{
+  "name": "agents-codex",
+  "interface": {
+    "displayName": "Agents Codex"
+  },
+  "plugins": [
+    {
+      "name": "minimal-codex-harness",
+      "source": {
+        "source": "local",
+        "path": "./plugins/minimal-codex-harness"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
