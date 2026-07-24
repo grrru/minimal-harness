@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "verified_at": "2026-07-24",
+  "managed_upstream": {
+    "agent-skills": {
+      "repository": "https://github.com/addyosmani/agent-skills",
+      "install": "codex plugin marketplace add addyosmani/agent-skills",
+      "marketplace": "agent-skills",
+      "update_policy": "tracks upstream marketplace"
+    },
+    "build-web-apps": {
+      "repository": "https://github.com/openai/plugins",
+      "install": "codex plugin add build-web-apps@openai-curated",
+      "marketplace": "openai-curated",
+      "update_policy": "tracks bundled marketplace snapshot"
+    },
+    "browser": {
+      "install": "codex plugin add browser@openai-bundled",
+      "marketplace": "openai-bundled",
+      "update_policy": "tracks bundled marketplace snapshot"
+    },
+    "imagegen": {
+      "distribution": "built-in Codex skill"
+    }
+  },
+  "vendored": {
+    "frontend-design": {
+      "repository": "https://github.com/anthropics/skills",
+      "commit": "1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+      "path": "skills/frontend-design",
+      "license": "Apache-2.0",
+      "modified": false
+    }
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Greenfield Web Design"
+  short_description: "Design, build, and verify polished web UIs"
+  default_prompt: "Use $greenfield-web-design to turn this product idea into a polished, browser-verified web interface."
