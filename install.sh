@@ -100,7 +100,7 @@ fi
 codex_base_dir="${CODEX_HOME:-${HOME}/.codex}"
 codex_skills_dir="$codex_base_dir/skills"
 
-for skill_name in frontend-design greenfield-web-design; do
+for skill_name in frontend-design greenfield-web-design gh-investigate-link; do
   source_dir="$script_dir/skills/$skill_name"
   target_dir="$codex_skills_dir/$skill_name"
 
@@ -121,6 +121,6 @@ done
 if [[ "$dry_run" -eq 1 ]]; then
   printf '\nDry run complete; no changes were made.\n'
 else
-  printf '\nInstalled upstream plugins and local design skills.\n'
+  printf '\nInstalled upstream plugins and local skills.\n'
   printf 'Open a new Codex task to load the updated skill list.\n'
 fi

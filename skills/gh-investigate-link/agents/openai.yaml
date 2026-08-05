@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate GitHub Link"
+  short_description: "Investigate GitHub links with the gh CLI"
+  default_prompt: "Use $gh-investigate-link to investigate this GitHub URL with gh and report evidence-backed findings."
