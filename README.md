@@ -19,6 +19,7 @@ frontend-design
 - `frontend-design`: 공식 Codex marketplace가 없어 고정된 upstream 버전을 포함
 - `greenfield-web-design`: 위 도구를 연결하는 로컬 진입 스킬
 - `gh-investigate-link`: GitHub 링크를 읽기 전용 `gh` 명령으로 조사하는 로컬 스킬
+- `create-commit`: 명시 호출 시 이슈 연결 규칙에 맞춰 커밋을 생성하는 로컬 스킬
 
 기존 TUI, ECC 스냅샷, custom agent, MCP, hook, AGENTS.md 주입 기능은 포함하지 않습니다.
 
@@ -36,7 +37,7 @@ frontend-design
 ./install.sh
 ```
 
-스크립트는 upstream 플러그인을 Codex 명령으로 설치하고, 로컬 스킬 세 개를
+스크립트는 upstream 플러그인을 Codex 명령으로 설치하고, 로컬 스킬 네 개를
 `${CODEX_HOME:-$HOME/.codex}/skills` 아래에 복사합니다. 완료 후 새 Codex 작업을
 열어야 새 스킬 목록이 반영됩니다.
 
@@ -56,6 +57,12 @@ GitHub 링크를 조사할 때는 다음처럼 시작합니다.
 
 ```text
 $gh-investigate-link 이 GitHub PR 링크의 변경 내용과 실패한 체크 원인을 조사해줘.
+```
+
+커밋을 만들 때는 반드시 스킬을 명시적으로 호출합니다.
+
+```text
+$create-commit 이슈 42번으로 현재 변경사항을 커밋해줘.
 ```
 
 ## 소스 정책

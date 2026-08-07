@@ -100,7 +100,7 @@ fi
 codex_base_dir="${CODEX_HOME:-${HOME}/.codex}"
 codex_skills_dir="$codex_base_dir/skills"
 
-for skill_name in frontend-design greenfield-web-design gh-investigate-link; do
+for skill_name in frontend-design greenfield-web-design gh-investigate-link create-commit; do
   source_dir="$script_dir/skills/$skill_name"
   target_dir="$codex_skills_dir/$skill_name"
 

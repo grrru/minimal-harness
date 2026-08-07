@@ -1,0 +1,7 @@
+interface:
+  display_name: "Create Commit"
+  short_description: "Create issue-linked conventional commits"
+  default_prompt: "Use $create-commit to commit the current changes with the required prefix, noun phrase, and issue number."
+
+policy:
+  allow_implicit_invocation: false
