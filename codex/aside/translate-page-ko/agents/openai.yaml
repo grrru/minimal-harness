@@ -1,0 +1,4 @@
+interface:
+  display_name: "Translate Page to Korean"
+  short_description: "Insert Korean translations under each block of a page"
+  default_prompt: "Use $translate-page-ko to translate this page into Korean in place, keeping the original text."

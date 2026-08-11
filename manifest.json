@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "groups": {
+    "core": "Local skills that define the harness, installed by default.",
+    "aside": "Standalone helpers kept in the harness but unrelated to its core flow.",
+    "vendor": "Upstream snapshots copied verbatim; edit the source repository instead."
+  },
+  "skills": [
+    {
+      "name": "create-commit",
+      "path": "codex/skills/create-commit",
+      "group": "core"
+    },
+    {
+      "name": "gh-investigate-link",
+      "path": "codex/skills/gh-investigate-link",
+      "group": "core"
+    },
+    {
+      "name": "greenfield-web-design",
+      "path": "codex/skills/greenfield-web-design",
+      "group": "core"
+    },
+    {
+      "name": "frontend-design",
+      "path": "codex/vendor/frontend-design",
+      "group": "vendor"
+    },
+    {
+      "name": "translate-page-ko",
+      "path": "codex/aside/translate-page-ko",
+      "group": "aside"
+    }
+  ]
+}
