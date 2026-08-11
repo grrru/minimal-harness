@@ -43,6 +43,42 @@
         "translated to English",
         "replaced the AskUserQuestion tool with a transcript interview protocol"
       ]
+    },
+    "make-a-plan": {
+      "repository": "git@oss.navercorp.com:lens-dev/AGENTS.md.git",
+      "commit": "ba060fdfc09c17e9f7650877e69f906b3a88e8ab",
+      "path": "claude/skills/make-a-plan",
+      "modified": true,
+      "changes": [
+        "translated to English",
+        "replaced the AskUserQuestion tool with a transcript interview protocol",
+        "dropped the $ARGUMENTS placeholder"
+      ]
+    },
+    "add-plan": {
+      "repository": "git@oss.navercorp.com:lens-dev/AGENTS.md.git",
+      "commit": "ba060fdfc09c17e9f7650877e69f906b3a88e8ab",
+      "path": "claude/skills/add-plan",
+      "modified": true,
+      "changes": [
+        "translated to English",
+        "replaced the AskUserQuestion tool with a transcript interview protocol",
+        "dropped the $ARGUMENTS placeholder",
+        "resolves PLAN.md or PLAN_*.md instead of PLAN.md only",
+        "stops instead of chaining into make-a-plan, which needs Claude's Skill tool"
+      ]
+    },
+    "follow-plan": {
+      "repository": "git@oss.navercorp.com:lens-dev/AGENTS.md.git",
+      "commit": "ba060fdfc09c17e9f7650877e69f906b3a88e8ab",
+      "path": "claude/skills/follow-plan",
+      "modified": true,
+      "changes": [
+        "translated to English",
+        "replaced the AskUserQuestion tool with a transcript interview protocol",
+        "resolves PLAN.md or PLAN_*.md instead of PLAN.md only",
+        "dropped the per-language verification command list and the hardcoded commit message format"
+      ]
     }
   }
 }

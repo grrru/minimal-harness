@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Plan Entry"
+  short_description: "Append a task to the plan without starting it"
+  default_prompt: "Use $add-plan to add this task to the plan file without implementing it."

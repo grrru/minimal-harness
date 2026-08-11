@@ -1,0 +1,4 @@
+interface:
+  display_name: "Follow Plan"
+  short_description: "Work through the plan file task by task"
+  default_prompt: "Use $follow-plan to work through the plan file one task at a time."

@@ -35,6 +35,10 @@ codex/
 | `greenfield-web-design` | core | upstream 도구를 연결하는 로컬 진입 스킬 |
 | `gh-investigate-link` | core | GitHub 링크를 읽기 전용 `gh` 명령으로 조사 |
 | `create-commit` | core | 명시 호출 시 이슈 연결 규칙에 맞춰 커밋 생성 |
+| `grill` | core | 만들기 전에 계획을 인터뷰로 스트레스 테스트 |
+| `make-a-plan` | core | 조사·인터뷰 후 `PLAN_<slug>.md` 를 쓰고 순서대로 실행 |
+| `add-plan` | core | 기존 계획 파일에 태스크 항목만 추가 (구현하지 않음) |
+| `follow-plan` | core | 계획 파일의 태스크를 구현 → 검증 → 커밋 순으로 하나씩 완결 |
 | `translate-page-ko` | aside | 영문 웹 페이지를 원문 유지한 채 한국어 병기 번역 |
 | `frontend-design` | vendor | 공식 Codex marketplace가 없어 고정한 upstream 버전 |
 
@@ -97,6 +101,16 @@ $gh-investigate-link 이 GitHub PR 링크의 변경 내용과 실패한 체크 �
 
 ```text
 $create-commit 이슈 42번으로 현재 변경사항을 커밋해줘.
+```
+
+계획 스킬 세 개는 한 벌로 동작합니다. `make-a-plan` 이 `PLAN_<slug>.md` 를 만들고,
+나머지 둘은 `PLAN.md` 또는 가장 최근 `PLAN_*.md` 를 찾아 이어받습니다.
+
+```text
+$grill 이 설계를 만들기 전에 집요하게 캐물어줘.
+$make-a-plan 이 작업을 계획으로 만들고 순서대로 진행해줘.
+$add-plan 계획에 이 태스크만 추가해줘.
+$follow-plan 계획대로 다음 태스크를 진행해줘.
 ```
 
 ## 소스 정책

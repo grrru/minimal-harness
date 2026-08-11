@@ -27,6 +27,21 @@
       "group": "core"
     },
     {
+      "name": "make-a-plan",
+      "path": "codex/skills/make-a-plan",
+      "group": "core"
+    },
+    {
+      "name": "add-plan",
+      "path": "codex/skills/add-plan",
+      "group": "core"
+    },
+    {
+      "name": "follow-plan",
+      "path": "codex/skills/follow-plan",
+      "group": "core"
+    },
+    {
       "name": "frontend-design",
       "path": "codex/vendor/frontend-design",
       "group": "vendor"
