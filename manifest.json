@@ -22,6 +22,11 @@
       "group": "core"
     },
     {
+      "name": "grill",
+      "path": "codex/skills/grill",
+      "group": "core"
+    },
+    {
       "name": "frontend-design",
       "path": "codex/vendor/frontend-design",
       "group": "vendor"

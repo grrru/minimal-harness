@@ -31,5 +31,18 @@
       "license": "Apache-2.0",
       "modified": false
     }
+  },
+  "ported": {
+    "_note": "Rewritten from a Claude Code source, not a snapshot. Fix the source first, then port the fix here.",
+    "grill": {
+      "repository": "git@oss.navercorp.com:lens-dev/AGENTS.md.git",
+      "commit": "ba060fdfc09c17e9f7650877e69f906b3a88e8ab",
+      "path": "claude/skills/grill",
+      "modified": true,
+      "changes": [
+        "translated to English",
+        "replaced the AskUserQuestion tool with a transcript interview protocol"
+      ]
+    }
   }
 }
