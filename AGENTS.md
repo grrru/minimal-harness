@@ -5,9 +5,10 @@ it is not a Codex host itself.
 
 ## Layout
 
-`manifest.json` is the single source of truth for what gets installed. A skill
-that is not listed there is invisible to `install.sh`, no matter where its
-directory sits.
+`manifest.json` is the single source of truth for what gets installed — local
+skills under `skills`, upstream Codex plugins under `plugins`. Anything not
+listed there is invisible to `install.sh`, no matter where its directory sits.
+`install.sh` hardcodes no plugin id; adding or dropping one is a manifest edit.
 
 The top level is split by host, because each host reads skills from a different
 directory and expects a different skill format:
@@ -18,6 +19,11 @@ directory and expects a different skill format:
   pinned commit in `SOURCES.lock.json`.
 - `aside/skills/` — host `aside`, group `aside`. Skills for the Aside browser
   agent, installed into the Aside profile, not into Codex.
+
+Plugins are group `upstream` and host `codex`. A plugin entry carries its
+`id` and `marketplace`, plus `marketplace_add` only when the marketplace has to
+be registered first; the installer runs the marketplace step for that entry
+alone.
 
 Adding a Codex skill means three things, all in the same commit: the directory
 with `SKILL.md`, an `agents/openai.yaml`, and a `manifest.json` entry. An Aside
@@ -46,9 +52,17 @@ skill is the directory with `SKILL.md` plus the manifest entry — no
 Changes to `install.sh` or `manifest.json` are verified before commit:
 
 ```sh
-./install.sh --dry-run
-CODEX_HOME="$(mktemp -d)" ./install.sh --only <codex-skill>  # then diff -rq against the source
-ASIDE_SKILLS_DIR="$(mktemp -d)" ./install.sh --host aside    # then diff -rq against the source
+./install.sh --no-tui --dry-run
+CODEX_HOME="$(mktemp -d)" ./install.sh --no-tui --only <codex-skill>  # then diff -rq
+ASIDE_SKILLS_DIR="$(mktemp -d)" ./install.sh --no-tui --host aside    # then diff -rq
+```
+
+Pass `--no-tui` in every scripted check. Without a terminal the picker is
+skipped anyway, but the flag keeps the check honest when someone runs it by
+hand. To exercise the picker itself, drive it through a pty:
+
+```sh
+printf 'n \r' | script -q /dev/null ./install.sh --dry-run   # deselect all, take the first row
 ```
 
 Installation uses `rsync --delete`, so it replaces a same-named skill already

@@ -12,12 +12,14 @@ frontend-design
 
 ## 구성
 
-marketplace가 설치하는 upstream 구성입니다.
+marketplace가 설치하는 upstream 구성입니다. `imagegen` 을 뺀 나머지는
+`manifest.json` 의 `plugins` 항목이라, 로컬 스킬과 똑같이 개별 선택됩니다
+(그룹 `upstream`).
 
 - [Addy Osmani agent-skills](https://github.com/addyosmani/agent-skills): upstream Codex marketplace에서 설치·업데이트
 - `build-web-apps`: OpenAI curated marketplace에서 설치
 - `browser`: OpenAI bundled marketplace에서 설치
-- `imagegen`: Codex 내장 스킬 사용
+- `imagegen`: Codex 내장 스킬 사용 (설치 대상 아님)
 
 이 저장소가 관리하는 스킬은 **호스트별 최상위 디렉토리** 아래에 둡니다. 어떤
 스킬이 어느 호스트·그룹에 속하는지는 [`manifest.json`](manifest.json)이 단독으로
@@ -50,34 +52,56 @@ aside/
 | `translate-page-ko` | aside | 영문 웹 페이지를 원문 유지한 채 한국어 병기 번역 |
 | `frontend-design` | vendor | 공식 Codex marketplace가 없어 고정한 upstream 버전 |
 
-기존 TUI, ECC 스냅샷, custom agent, MCP, hook, AGENTS.md 주입 기능은 포함하지 않습니다.
+기존 ECC 스냅샷, custom agent, MCP, hook, AGENTS.md 주입 기능은 포함하지 않습니다.
 
 ## 설치
 
-먼저 실행할 명령을 확인합니다.
-
-```sh
-./install.sh --dry-run
-```
-
-설치 또는 업데이트합니다.
+터미널에서 그냥 실행하면 설치할 항목을 고르는 화면이 뜹니다.
 
 ```sh
 ./install.sh
 ```
 
+```text
+  minimal-harness — installer
+  12 of 12 items selected
+
+  codex → ~/.codex/skills
+  ❯ [x] create-commit              core
+    [x] gh-investigate-link        core
+    ...
+  aside → ~/.aside/u/0/skills/user
+    [x] translate-page-ko          aside
+
+  upstream → codex plugin add
+    [x] agent-skills               agent-skills@agent-skills
+    [x] build-web-apps             build-web-apps@openai-curated
+    [x] browser                    browser@openai-bundled
+
+  ↑/↓ move · space toggle · a all · n none · d dry run · enter install · q quit
+```
+
+`d` 로 dry run을 켜면 실행할 명령만 출력하고 아무것도 바꾸지 않습니다. `q` 는
+아무것도 설치하지 않고 나갑니다.
+
+터미널이 아닌 곳(CI, 파이프)에서는 화면 없이 곧바로 전체 설치로 넘어갑니다.
+`--no-tui` 로 이 동작을 명시할 수 있고, `--tui` 는 반대로 강제합니다.
+
 스크립트는 upstream 플러그인을 Codex 명령으로 설치하고, manifest 의 로컬 스킬을
 각 스킬의 호스트 디렉토리로 복사합니다. 완료 후 새 Codex 작업을 열거나 Aside를
 새로고침해야 새 스킬 목록이 반영됩니다.
 
-일부만 설치할 때는 호스트·그룹·이름으로 범위를 좁힙니다. `--host codex` 와
-`--group core` 를 제외한 모든 필터는 upstream 플러그인 설치를 건너뛰고 로컬
-스킬만 다룹니다.
+일부만 설치할 때는 호스트·그룹·이름으로 범위를 좁힙니다. 필터는 화면을
+건너뛰는 게 아니라 **초기 선택 상태를 정합니다** — `--host aside --tui` 는 Aside
+스킬만 체크된 상태로 화면을 엽니다. 플러그인도 같은 필터를 받으므로
+`--only browser` 면 그 플러그인 하나만 설치합니다.
 
 ```sh
+./install.sh --no-tui --dry-run
 ./install.sh --host aside
-./install.sh --group core
-./install.sh --only create-commit
+./install.sh --group core        # 로컬 core 스킬만, 플러그인 제외
+./install.sh --group upstream    # 플러그인만
+./install.sh --only browser
 ```
 
 설치는 `rsync --delete` 로 디렉터리를 통째로 맞추므로, 같은 이름의 스킬이 이미

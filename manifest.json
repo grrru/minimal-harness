@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "hosts": {
     "codex": {
       "description": "Codex CLI. Skills carry agents/openai.yaml.",
@@ -15,7 +15,8 @@
   "groups": {
     "core": "Local Codex skills that define the harness, installed by default.",
     "vendor": "Upstream Codex snapshots copied verbatim; edit the source repository instead.",
-    "aside": "Skills for the Aside browser agent, installed into the Aside profile."
+    "aside": "Skills for the Aside browser agent, installed into the Aside profile.",
+    "upstream": "Upstream Codex plugins installed through the codex CLI, not copied by this repo."
   },
   "skills": [
     {
@@ -71,6 +72,30 @@
       "path": "aside/skills/translate-page-ko",
       "host": "aside",
       "group": "aside"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "id": "agent-skills@agent-skills",
+      "marketplace": "agent-skills",
+      "marketplace_add": "addyosmani/agent-skills",
+      "host": "codex",
+      "group": "upstream"
+    },
+    {
+      "name": "build-web-apps",
+      "id": "build-web-apps@openai-curated",
+      "marketplace": "openai-curated",
+      "host": "codex",
+      "group": "upstream"
+    },
+    {
+      "name": "browser",
+      "id": "browser@openai-bundled",
+      "marketplace": "openai-bundled",
+      "host": "codex",
+      "group": "upstream"
     }
   ]
 }
