@@ -37,6 +37,20 @@ Write it so this file alone is enough to resume after a session reset:
 - How each task is verified
 - Last updated date
 
+Cut the task list along these lines:
+
+- Slice vertically. One task carries a single path end to end — schema, API,
+  and UI for one behavior — rather than a whole layer at a time. Every task
+  leaves the tree building and the tests passing.
+- Keep tasks small. Roughly five files or fewer, and a scope you can state in
+  at most three completion criteria. An "and" in the title means it is two
+  tasks. Split anything larger before writing it down.
+- Order by dependency, and put the risky or unproven task early so it fails
+  while the plan is still cheap to change.
+- After every two or three tasks, add a checkpoint line naming what must hold
+  at that point — build, full test suite, and the user-visible behavior
+  completed so far.
+
 ## 4. Execute
 
 Report the plan path and task list, then ask whether to start with T1. Once

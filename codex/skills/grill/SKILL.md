@@ -1,6 +1,6 @@
 ---
 name: grill
-description: Interview the user relentlessly about a plan or design until both sides understand it the same way. Use when the user wants to stress-test a plan before building it, or says "grill me" or `$grill`.
+description: Interview the user relentlessly about a plan or design until both sides understand it the same way. Use only when the user invokes `$grill` explicitly.
 ---
 
 # Grill

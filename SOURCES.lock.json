@@ -41,7 +41,8 @@
       "modified": true,
       "changes": [
         "translated to English",
-        "replaced the AskUserQuestion tool with a transcript interview protocol"
+        "replaced the AskUserQuestion tool with a transcript interview protocol",
+        "restricted to explicit $grill invocation, so it no longer collides with the upstream interview-me skill's \"grill me\" trigger"
       ]
     },
     "make-a-plan": {
@@ -52,7 +53,8 @@
       "changes": [
         "translated to English",
         "replaced the AskUserQuestion tool with a transcript interview protocol",
-        "dropped the $ARGUMENTS placeholder"
+        "dropped the $ARGUMENTS placeholder",
+        "added task sizing, vertical slicing, and checkpoint guidance adapted from agent-skills planning-and-task-breakdown"
       ]
     },
     "add-plan": {
@@ -77,7 +79,8 @@
         "translated to English",
         "replaced the AskUserQuestion tool with a transcript interview protocol",
         "resolves PLAN.md or PLAN_*.md instead of PLAN.md only",
-        "dropped the per-language verification command list and the hardcoded commit message format"
+        "dropped the per-language verification command list and the hardcoded commit message format",
+        "added test-first, always-buildable, and feature-flag rules adapted from agent-skills incremental-implementation"
       ]
     }
   }

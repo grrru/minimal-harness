@@ -43,7 +43,7 @@ aside/
 | `greenfield-web-design` | core | upstream 도구를 연결하는 로컬 진입 스킬 |
 | `gh-investigate-link` | core | GitHub 링크를 읽기 전용 `gh` 명령으로 조사 |
 | `create-commit` | core | 명시 호출 시 이슈 연결 규칙에 맞춰 커밋 생성 |
-| `grill` | core | 만들기 전에 계획을 인터뷰로 스트레스 테스트 |
+| `grill` | core | 명시 호출 시 계획을 인터뷰로 스트레스 테스트 |
 | `make-a-plan` | core | 조사·인터뷰 후 `PLAN_<slug>.md` 를 쓰고 순서대로 실행 |
 | `add-plan` | core | 기존 계획 파일에 태스크 항목만 추가 (구현하지 않음) |
 | `follow-plan` | core | 계획 파일의 태스크를 구현 → 검증 → 커밋 순으로 하나씩 완결 |

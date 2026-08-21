@@ -35,8 +35,14 @@ implementing, not after.
 
 ### 2-2. Implement
 
-Work in small, safe steps. New behavior ships with tests. For a bug fix, write
-the regression test first and watch it fail before fixing it.
+Work in small, safe steps.
+
+- Write the test first, for a new behavior as much as for a bug fix. Watch it
+  fail for the right reason, then write the smallest code that passes it.
+- Keep the tree building. Every step you stop at compiles and leaves the
+  existing tests green; a task is never parked mid-refactor.
+- Put an unfinished feature behind a flag that defaults to off, rather than
+  shipping a half-wired path on the default one.
 
 Diagnose and fix problems yourself before asking the user. Never reach for an
 unsafe bypass such as `--no-verify`.
