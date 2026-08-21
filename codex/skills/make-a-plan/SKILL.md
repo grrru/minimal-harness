@@ -1,6 +1,6 @@
 ---
 name: make-a-plan
-description: Investigate a task, interview the user about whatever the investigation cannot settle, write a PLAN_<slug>.md master document, then work through its tasks in order. Use when the user asks for a plan before implementation, or invokes `$make-a-plan`.
+description: Investigate a task, interview the user about whatever the investigation cannot settle, write a PLAN_<slug>.md master document, then work through its tasks in order. Use only when the user invokes `$make-a-plan` explicitly.
 ---
 
 # Make a Plan

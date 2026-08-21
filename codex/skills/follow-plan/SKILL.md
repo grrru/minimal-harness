@@ -1,6 +1,6 @@
 ---
 name: follow-plan
-description: Read the plan file and work through its tasks in order, completing each one implement → verify → commit before starting the next. Use when the user asks to proceed with an existing plan, or invokes `$follow-plan`.
+description: Read the plan file and work through its tasks in order, completing each one implement → verify → commit before starting the next. Use only when the user invokes `$follow-plan` explicitly.
 ---
 
 # Follow Plan

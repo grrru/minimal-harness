@@ -40,17 +40,24 @@ aside/
 | `codex` | `${CODEX_SKILLS_DIR:-${CODEX_HOME:-~/.codex}/skills}` | `SKILL.md` + `agents/openai.yaml` |
 | `aside` | `${ASIDE_SKILLS_DIR:-${ASIDE_HOME:-~/.aside}/u/0/skills/user}` | `SKILL.md` 만 (`icon`, `autoInject` frontmatter 지원) |
 
-| 스킬 | 그룹 | 설명 |
-|------|------|------|
-| `greenfield-web-design` | core | upstream 도구를 연결하는 로컬 진입 스킬 |
-| `gh-investigate-link` | core | GitHub 링크를 읽기 전용 `gh` 명령으로 조사 |
-| `create-commit` | core | 명시 호출 시 이슈 연결 규칙에 맞춰 커밋 생성 |
-| `grill` | core | 명시 호출 시 계획을 인터뷰로 스트레스 테스트 |
-| `make-a-plan` | core | 조사·인터뷰 후 `PLAN_<slug>.md` 를 쓰고 순서대로 실행 |
-| `add-plan` | core | 기존 계획 파일에 태스크 항목만 추가 (구현하지 않음) |
-| `follow-plan` | core | 계획 파일의 태스크를 구현 → 검증 → 커밋 순으로 하나씩 완결 |
-| `translate-page-ko` | aside | 영문 웹 페이지를 원문 유지한 채 한국어 병기 번역 |
-| `frontend-design` | vendor | 공식 Codex marketplace가 없어 고정한 upstream 버전 |
+| 스킬 | 그룹 | 발동 | 설명 |
+|------|------|------|------|
+| `greenfield-web-design` | core | 자동 | upstream 도구를 연결하는 로컬 진입 스킬 |
+| `gh-investigate-link` | core | 자동 | GitHub 링크를 읽기 전용 `gh` 명령으로 조사 |
+| `create-commit` | core | `$create-commit` | 이슈 연결 규칙에 맞춰 커밋 생성 |
+| `grill` | core | `$grill` | 계획을 인터뷰로 스트레스 테스트 |
+| `make-a-plan` | core | `$make-a-plan` | 조사·인터뷰 후 `PLAN_<slug>.md` 를 쓰고 순서대로 실행 |
+| `add-plan` | core | `$add-plan` | 기존 계획 파일에 태스크 항목만 추가 (구현하지 않음) |
+| `follow-plan` | core | `$follow-plan` | 계획 파일의 태스크를 구현 → 검증 → 커밋 순으로 하나씩 완결 |
+| `translate-page-ko` | aside | 자동 | 영문 웹 페이지를 원문 유지한 채 한국어 병기 번역 |
+| `frontend-design` | vendor | 자동 | 공식 Codex marketplace가 없어 고정한 upstream 버전 |
+
+계획·커밋 스킬 5종은 `policy.allow_implicit_invocation: false` 라 이름을 직접
+불러야만 뜹니다. 평상시 계획·구현 흐름은 `agent-skills` 의 `interview-me`,
+`planning-and-task-breakdown`, `incremental-implementation` 이 맡고, 이 저장소의
+규약(단일 `PLAN_<slug>.md`, 이슈 번호가 붙는 커밋)이 필요할 때만 명시 호출로
+넘어옵니다. upstream 스킬은 `agents/openai.yaml` 이 없어 전부 자동 발동이므로,
+이렇게 두지 않으면 같은 요청에서 어느 쪽이 뜰지 보장되지 않습니다.
 
 기존 ECC 스냅샷, custom agent, MCP, hook, AGENTS.md 주입 기능은 포함하지 않습니다.
 

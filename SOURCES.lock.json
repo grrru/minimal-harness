@@ -54,7 +54,8 @@
         "translated to English",
         "replaced the AskUserQuestion tool with a transcript interview protocol",
         "dropped the $ARGUMENTS placeholder",
-        "added task sizing, vertical slicing, and checkpoint guidance adapted from agent-skills planning-and-task-breakdown"
+        "added task sizing, vertical slicing, and checkpoint guidance adapted from agent-skills planning-and-task-breakdown",
+        "made explicit-only (policy.allow_implicit_invocation: false) so the upstream agent-skills plugin leads the ordinary flow"
       ]
     },
     "add-plan": {
@@ -67,7 +68,8 @@
         "replaced the AskUserQuestion tool with a transcript interview protocol",
         "dropped the $ARGUMENTS placeholder",
         "resolves PLAN.md or PLAN_*.md instead of PLAN.md only",
-        "stops instead of chaining into make-a-plan, which needs Claude's Skill tool"
+        "stops instead of chaining into make-a-plan, which needs Claude's Skill tool",
+        "made explicit-only (policy.allow_implicit_invocation: false) so the upstream agent-skills plugin leads the ordinary flow"
       ]
     },
     "follow-plan": {
@@ -80,7 +82,8 @@
         "replaced the AskUserQuestion tool with a transcript interview protocol",
         "resolves PLAN.md or PLAN_*.md instead of PLAN.md only",
         "dropped the per-language verification command list and the hardcoded commit message format",
-        "added test-first, always-buildable, and feature-flag rules adapted from agent-skills incremental-implementation"
+        "added test-first, always-buildable, and feature-flag rules adapted from agent-skills incremental-implementation",
+        "made explicit-only (policy.allow_implicit_invocation: false) so the upstream agent-skills plugin leads the ordinary flow"
       ]
     }
   }

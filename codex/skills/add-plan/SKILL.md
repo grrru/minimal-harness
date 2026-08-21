@@ -1,6 +1,6 @@
 ---
 name: add-plan
-description: Add one task entry to an existing plan file after light investigation, without starting the work. Use when the user wants a task appended to PLAN.md, or invokes `$add-plan`.
+description: Add one task entry to an existing plan file after light investigation, without starting the work. Use only when the user invokes `$add-plan` explicitly.
 ---
 
 # Add Plan

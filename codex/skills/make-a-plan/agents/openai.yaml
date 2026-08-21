@@ -2,3 +2,6 @@ interface:
   display_name: "Make a Plan"
   short_description: "Write a PLAN document, then work through it"
   default_prompt: "Use $make-a-plan to turn this task into a written plan and then work through it."
+
+policy:
+  allow_implicit_invocation: false

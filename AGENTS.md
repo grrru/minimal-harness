@@ -39,6 +39,14 @@ skill is the directory with `SKILL.md` plus the manifest entry — no
 - `agents/openai.yaml` (Codex only) sets `interface.display_name`,
   `short_description`, and `default_prompt`. Skills that must never fire on their
   own also set `policy.allow_implicit_invocation: false`.
+- The planning and commit skills — `make-a-plan`, `add-plan`, `follow-plan`,
+  `grill`, `create-commit` — all carry that opt-out. The upstream `agent-skills`
+  plugin ships no `agents/openai.yaml`, so every skill in it fires implicitly and
+  a session-start hook injects its meta-skill; upstream therefore leads the
+  ordinary planning flow, and ours are reached by name when this repo's
+  conventions are wanted. A description on an explicit-only skill says
+  "Use only when the user invokes `$name` explicitly" and advertises no other
+  trigger phrase.
 - Aside skills carry no companion file. Their frontmatter may add `icon` and
   `autoInject.keywords` on top of `name` and `description`.
 - Codex has no `AskUserQuestion`, no `Skill` tool, and no subagents. A skill
