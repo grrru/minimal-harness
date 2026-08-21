@@ -1,54 +1,75 @@
 {
-  "schema": 1,
+  "schema": 2,
+  "hosts": {
+    "codex": {
+      "description": "Codex CLI. Skills carry agents/openai.yaml.",
+      "skills_dir_env": "CODEX_SKILLS_DIR",
+      "skills_dir_default": "${CODEX_HOME:-$HOME/.codex}/skills"
+    },
+    "aside": {
+      "description": "Aside browser. Skills are SKILL.md only; no agents/openai.yaml.",
+      "skills_dir_env": "ASIDE_SKILLS_DIR",
+      "skills_dir_default": "${ASIDE_HOME:-$HOME/.aside}/u/0/skills/user"
+    }
+  },
   "groups": {
-    "core": "Local skills that define the harness, installed by default.",
-    "aside": "Standalone helpers kept in the harness but unrelated to its core flow.",
-    "vendor": "Upstream snapshots copied verbatim; edit the source repository instead."
+    "core": "Local Codex skills that define the harness, installed by default.",
+    "vendor": "Upstream Codex snapshots copied verbatim; edit the source repository instead.",
+    "aside": "Skills for the Aside browser agent, installed into the Aside profile."
   },
   "skills": [
     {
       "name": "create-commit",
       "path": "codex/skills/create-commit",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "gh-investigate-link",
       "path": "codex/skills/gh-investigate-link",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "greenfield-web-design",
       "path": "codex/skills/greenfield-web-design",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "grill",
       "path": "codex/skills/grill",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "make-a-plan",
       "path": "codex/skills/make-a-plan",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "add-plan",
       "path": "codex/skills/add-plan",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "follow-plan",
       "path": "codex/skills/follow-plan",
+      "host": "codex",
       "group": "core"
     },
     {
       "name": "frontend-design",
       "path": "codex/vendor/frontend-design",
+      "host": "codex",
       "group": "vendor"
     },
     {
       "name": "translate-page-ko",
-      "path": "codex/aside/translate-page-ko",
+      "path": "aside/skills/translate-page-ko",
+      "host": "aside",
       "group": "aside"
     }
   ]

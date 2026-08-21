@@ -19,16 +19,24 @@ marketplace가 설치하는 upstream 구성입니다.
 - `browser`: OpenAI bundled marketplace에서 설치
 - `imagegen`: Codex 내장 스킬 사용
 
-이 저장소가 관리하는 스킬은 `codex/` 아래에 그룹별로 둡니다. 어떤 스킬이 어느
-그룹에 속하는지는 [`manifest.json`](manifest.json)이 단독으로 정하며,
-`install.sh`는 이 파일만 보고 설치합니다.
+이 저장소가 관리하는 스킬은 **호스트별 최상위 디렉토리** 아래에 둡니다. 어떤
+스킬이 어느 호스트·그룹에 속하는지는 [`manifest.json`](manifest.json)이 단독으로
+정하며, `install.sh`는 이 파일만 보고 설치합니다.
 
 ```text
 codex/
   skills/   # group: core   — 하네스를 이루는 로컬 스킬
-  aside/    # group: aside  — 하네스 흐름과 무관하지만 함께 관리하는 스킬
   vendor/   # group: vendor — upstream 스냅샷, 이 저장소에서 수정하지 않음
+aside/
+  skills/   # group: aside  — Aside 브라우저 에이전트용 스킬
 ```
+
+호스트마다 설치 위치와 스킬 형식이 다릅니다.
+
+| 호스트 | 설치 위치 | 스킬 형식 |
+|--------|-----------|-----------|
+| `codex` | `${CODEX_SKILLS_DIR:-${CODEX_HOME:-~/.codex}/skills}` | `SKILL.md` + `agents/openai.yaml` |
+| `aside` | `${ASIDE_SKILLS_DIR:-${ASIDE_HOME:-~/.aside}/u/0/skills/user}` | `SKILL.md` 만 (`icon`, `autoInject` frontmatter 지원) |
 
 | 스킬 | 그룹 | 설명 |
 |------|------|------|
@@ -59,19 +67,21 @@ codex/
 ```
 
 스크립트는 upstream 플러그인을 Codex 명령으로 설치하고, manifest 의 로컬 스킬을
-`${CODEX_HOME:-$HOME/.codex}/skills` 아래에 복사합니다. 완료 후 새 Codex 작업을
-열어야 새 스킬 목록이 반영됩니다.
+각 스킬의 호스트 디렉토리로 복사합니다. 완료 후 새 Codex 작업을 열거나 Aside를
+새로고침해야 새 스킬 목록이 반영됩니다.
 
-일부만 설치할 때는 그룹이나 이름으로 범위를 좁힙니다. 두 플래그 모두 upstream
-플러그인 설치를 건너뛰고 로컬 스킬만 다룹니다(`--group core` 는 제외).
+일부만 설치할 때는 호스트·그룹·이름으로 범위를 좁힙니다. `--host codex` 와
+`--group core` 를 제외한 모든 필터는 upstream 플러그인 설치를 건너뛰고 로컬
+스킬만 다룹니다.
 
 ```sh
-./install.sh --group aside
+./install.sh --host aside
+./install.sh --group core
 ./install.sh --only create-commit
 ```
 
 설치는 `rsync --delete` 로 디렉터리를 통째로 맞추므로, 같은 이름의 스킬이 이미
-`~/.codex/skills` 에 있으면 이 저장소의 내용으로 대체됩니다.
+호스트의 스킬 디렉토리에 있으면 이 저장소의 내용으로 대체됩니다.
 
 ## 사용
 
