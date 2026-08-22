@@ -1,6 +1,20 @@
 (payload) => {
   const items = (payload && payload.items) || [];
   const withToggle = !(payload && payload.toggle === false);
+  const doCache = !(payload && payload.cache === false);
+
+  // Cache key + hash must stay in sync with restore-translations.js
+  const CACHE_VERSION = 1;
+  const pageKey = () => 'akt-tr:v' + CACHE_VERSION + ':' + location.origin + location.pathname;
+  const hashText = (s) => {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = (h + (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24)) >>> 0;
+    }
+    return h.toString(16);
+  };
+  const srcText = (el) => (el.innerText || '').replace(/\s+\n/g, '\n').trim();
 
   if (!document.getElementById('akt-style')) {
     const st = document.createElement('style');
@@ -25,9 +39,11 @@
   const INSIDE = new Set(['LI', 'TD', 'TH', 'DD', 'DT', 'SUMMARY', 'FIGCAPTION', 'BLOCKQUOTE']);
   let done = 0;
   const missing = [];
+  const entries = {};
   for (const it of items) {
     const el = document.querySelector(`[data-akt-idx="${it.i}"]`);
     if (!el) { missing.push(it.i); continue; }
+    entries[hashText(srcText(el))] = it.ko;
     const div = document.createElement('div');
     div.className = 'akt-tr';
     div.setAttribute('data-akt-tr', '1');
@@ -48,5 +64,18 @@
     };
     document.body.appendChild(b);
   }
-  return { injected: done, missing };
+  // Persist so a stray navigation / reload doesn't throw the work away.
+  let cached = 0, cacheError = null;
+  if (doCache) {
+    try {
+      localStorage.setItem(pageKey(), JSON.stringify({
+        v: CACHE_VERSION, url: location.href, savedAt: Date.now(), entries
+      }));
+      cached = Object.keys(entries).length;
+    } catch (e) {
+      cacheError = String(e && e.message || e);
+    }
+  }
+
+  return { injected: done, missing, cacheKey: pageKey(), cached, cacheError, entries };
 }

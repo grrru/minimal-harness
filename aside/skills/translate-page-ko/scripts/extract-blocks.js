@@ -14,6 +14,10 @@
 
   // clear previous run markers
   document.querySelectorAll('[data-akt-idx]').forEach((el) => el.removeAttribute('data-akt-idx'));
+  // Remove any injected translations first. Otherwise an li/td that already holds a
+  // Korean child would read back as "already Korean" and get skipped on re-extraction.
+  // inject-translations.js re-adds them, and the cache means nothing is lost.
+  document.querySelectorAll('.akt-tr').forEach((n) => n.remove());
 
   const hangul = /[\uac00-\ud7a3]/;
   const out = [];
